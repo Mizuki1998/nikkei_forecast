@@ -114,10 +114,16 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(20),
+          Padding(
+            padding: const EdgeInsets.all(20),
             child: TextField(
-              decoration: InputDecoration(hintText: '本日の日経平均を予想してみましょう！'),
+              decoration: InputDecoration(
+                  hintText: '日経平均を入力する',
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF00677A)),
+                  )),
             ),
           ),
         ],
