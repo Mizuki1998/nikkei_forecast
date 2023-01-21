@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nikkei_forecast/provider/nikkei_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,9 +10,23 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  String nikkeiExpected = "0";
   @override
   void initState() {
     super.initState();
+    _getSharedpreferences();
+  }
+
+  Future<void> _getSharedpreferences() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      nikkeiExpected = prefs.getString('text') ?? "0";
+    });
+  }
+
+  Future<void> _setSharedpreferences() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('text', nikkeiExpected);
   }
 
   @override
@@ -120,18 +135,30 @@ class _HomePageState extends ConsumerState<HomePage> {
               children: [
                 TextField(
                   decoration: InputDecoration(
-                      hintText: '日経平均を入力する',
-                      filled: true,
-                      fillColor: Colors.grey.shade200,
-                      border: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF00677A)),
-                      )),
+                    hintText: '日経平均を入力する',
+                    filled: true,
+                    fillColor: Colors.grey.shade200,
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF00677A),
+                      ),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    nikkeiExpected = value;
+                  },
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _setSharedpreferences();
+                  },
                   child: const Text(
                     "完了",
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Text("あなたの日経平均予想値：$nikkeiExpected"),
                 ),
               ],
             ),
