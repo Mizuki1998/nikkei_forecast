@@ -53,7 +53,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0, left: 32),
                         child: Text(
-                          "${nikkei?.chart?.result![0].meta.regularMarketPrice}",
+                          "${nikkei?.chart?.result![0].meta.regularMarketPrice.round()}"
+                          "円",
                           style: const TextStyle(
                             fontSize: 24,
                             color: Color(0xFF290706),
@@ -73,7 +74,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0, left: 32),
                         child: Text(
-                          "${nikkei?.chart?.result![0].indicators.quote[0].close[0]}",
+                          "${nikkei?.chart?.result![0].indicators.quote[0].close[0].round()}"
+                          "円",
                           style: const TextStyle(
                             fontSize: 24,
                             color: Color(0xFF290706),
@@ -93,7 +95,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0, left: 32),
                         child: Text(
-                          "${nikkei?.chart?.result![0].indicators.quote[0].high[0]}",
+                          "${nikkei?.chart?.result![0].indicators.quote[0].high[0].round()}"
+                          "円",
                           style: const TextStyle(
                             fontSize: 24,
                             color: Color(0xFF290706),

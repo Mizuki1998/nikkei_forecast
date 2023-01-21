@@ -28,7 +28,6 @@ class _MyAppBottomNavigationBarState extends State<MyAppBottomNavigationBar> {
   static const _screens = [
     HomePage(),
     HomePage(),
-    HomePage(),
   ];
 
   int _selectedIndex = 0;
