@@ -116,14 +116,24 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: TextField(
-              decoration: InputDecoration(
-                  hintText: '日経平均を入力する',
-                  filled: true,
-                  fillColor: Colors.grey.shade200,
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF00677A)),
-                  )),
+            child: Column(
+              children: [
+                TextField(
+                  decoration: InputDecoration(
+                      hintText: '日経平均を入力する',
+                      filled: true,
+                      fillColor: Colors.grey.shade200,
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF00677A)),
+                      )),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "完了",
+                  ),
+                ),
+              ],
             ),
           ),
         ],
