@@ -114,6 +114,12 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.all(20),
+            child: TextField(
+              decoration: InputDecoration(hintText: '本日の日経平均を予想してみましょう！'),
+            ),
+          ),
         ],
       ),
     );
